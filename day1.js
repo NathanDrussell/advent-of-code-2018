@@ -6,9 +6,8 @@ async function part1() {
 
   let total = 0;
   array.forEach(element => {
-    let operation = element[0]
-    let value = parseInt(/\d.*/.exec(element)[0])
-    total += (operation == '-') ? value * -1 : value
+    let value = parseInt(element)
+    total += value
   });
   console.log('The answer for part 1 is: '+ total)
 }
