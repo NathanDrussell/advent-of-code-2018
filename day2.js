@@ -5,8 +5,6 @@ async function part1() {
   let array = input.split('\r\n')
   let tot3 = 0;
   let tot2 = 0;
-
-
   array.forEach(line => {
     let obj = {}
     Array.from(line).forEach(char => {
@@ -34,11 +32,7 @@ async function part1() {
   });
 
   console.log('The answer to Day 2 Part 1 is: ' + (tot2 * tot3))
-
-
-
 }
-
 
 async function part2() {
   let input = await loadInput(2)
@@ -66,10 +60,7 @@ async function part2() {
     })
   });
   console.log('The answer to Day 2 Part 2 is: ' + result)
-
-
-  
 }
 
 part1();
-  part2();
+part2();
