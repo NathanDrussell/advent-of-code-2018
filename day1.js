@@ -17,18 +17,18 @@ async function part2() {
   let input = await loadInput(1)
   let array =  input.split('\r\n')
   let total = 0;
-  let totalsArray = [ total ]
+  let totalsArray = { total }
   let answer = 0;
   let found = false;
   while(!found){
     array.forEach(element => {
       let value = parseInt(element)
       total += value
-      if (totalsArray.includes(total) && !found){
+      if (totalsArray[total] && !found){
         found = true;
         answer = total
       }
-      totalsArray.push(total)
+      totalsArray[total] = true
     });
   }
   console.log('The answer for part 2 is: ' + answer)
