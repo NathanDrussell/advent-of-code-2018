@@ -1,38 +1,35 @@
 let loadInput = require('./input')
+let input = loadInput(1)
+let array = input.split('\r\n').map(val => parseInt(val))
 
-async function part1() {
-  let input = await loadInput(1, 1)
-  let array =  input.split('\r\n')
-
+function part1() {
   let total = 0;
   array.forEach(element => {
-    let value = parseInt(element)
-    total += value
+    total += element
   });
-  console.log('The answer for part 1 is: '+ total)
+  console.log('The answer for part 1 is: ' + total)
 }
 
-async function part2() {
-  let input = await loadInput(1)
-  let array =  input.split('\r\n')
+function part2() {
   let total = 0;
-  let totalsArray = { total }
   let answer = 0;
+  let totalsArray = { total }
   let found = false;
-  while(!found){
+  while (!found) {
     array.forEach(element => {
-      let value = parseInt(element)
-      total += value
-      if (totalsArray[total] && !found){
+      total += element
+      if (totalsArray[total] && !found) {
         found = true;
         answer = total
+        console.log('The answer for part 2 is: ' + answer)
+        process.exit()
       }
       totalsArray[total] = true
     });
   }
-  console.log('The answer for part 2 is: ' + answer)
 }
 
 part1()
 part2()
+
 

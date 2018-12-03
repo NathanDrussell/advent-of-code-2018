@@ -1,7 +1,8 @@
 let loadInput = require('./input')
 
-async function part1() {
-  let input = await loadInput(2)
+
+function part1() {
+  let input = loadInput(2)
   let array = input.split('\r\n')
   let tot3 = 0;
   let tot2 = 0;
@@ -21,46 +22,49 @@ async function part1() {
       if (obj[key] === 2 && !cantBeTwo) {
         tot2++;
         cantBeTwo = true;
-
       }
       if (obj[key] === 3 && !cantBeThree) {
         tot3++;
         cantBeThree = true;
       }
     })
-
   });
-
   console.log('The answer to Day 2 Part 1 is: ' + (tot2 * tot3))
 }
 
-async function part2() {
-  let input = await loadInput(2)
+function part2() {
+  let input = loadInput(2)
   let array =  input.split('\r\n')
   let result = ''
-  array.forEach(element => {
-    let orig = Array.from(element)
-    array.forEach(_element =>{
-      let _new = []
+  array.forEach(line => {
+    let source = Array.from(line)
+    array.forEach(lineToCompare =>{
+      let comparison = []
       let total = 0;
       let pos = 0;
-      if (element != _element){
-        _new = Array.from(_element)
-        for (let i = 0; i < orig.length; i++){
-          if (orig[i] != _new[i]) {
+      if (line != lineToCompare){
+        comparison = Array.from(lineToCompare)
+        for (let i = 0; i < source.length; i++){
+          if (source[i] != comparison[i]) {
             total++;
             pos = i
           }
         }
       }
       if (total == 1){
-        orig.splice(pos,1)
-        result = orig.join('')
+        source.splice(pos,1)
+        result = source.join('')
+        console.log('The answer to Day 2 Part 2 is: ' + result)
+        console.timeEnd('gpu')
+        process.exit()
       }
     })
   });
-  console.log('The answer to Day 2 Part 2 is: ' + result)
 }
+
+
+
+
 
 part1();
 part2();
